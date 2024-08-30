@@ -1,20 +1,33 @@
-<div>
-	<div
-		class="flex flex-row flex-container justify-content-between align-items-center"
-		[style.background-color]="'var(--primary-color)'"
-		[style.background]="
-			'linear-gradient(120deg, var(--primary-600) 0%, var(--primary-400) 100%)'
-		"
+<div
+	[style.background-color]="'var(--primary-color)'"
+	[style.background]="
+		'linear-gradient(120deg, var(--primary-600) 0%, var(--primary-400) 100%)'
+	"
+>
+	<p-toolbar
+		[style]="{
+			border: 'none',
+			'background-color': 'transparent',
+		}"
 	>
-		<div [routerLink]="['/dashboard']">
-			<img src="assets/logo-placeholder-image.png" [width]="64" />
-		</div>
-		<p-toolbar
-			[style]="{ border: 'none', 'background-color': 'transparent' }"
-		>
+		<ng-template pTemplate="start">
+			<div [routerLink]="['/dashboard']">
+				<img src="assets/logo-placeholder-image.png" [width]="64" />
+			</div>
+			<!--      <p-tieredMenu [model]="dummyNavItems" />-->
+			<i class="pi pi-align-justify" (click)="menu.toggle($event)"></i>
+			<p-tieredMenu
+				#menu
+				[model]="dummyNavItems"
+				[popup]="true"
+				appendTo="body"
+			/>
+		</ng-template>
+		<ng-template pTemplate="end">
 			<div *ngIf="!loggedIn">
-				<p-button
-					[rounded]="true"
+				<button
+					pButton
+					class="p-button-rounded"
 					[style]="{
 						'background-color': 'transparent',
 						'border-color': 'transparent',
@@ -23,9 +36,10 @@
 					label="Sign-Up"
 					icon="pi pi-user"
 					[routerLink]="['/signup']"
-				/>
-				<p-button
-					[rounded]="true"
+				></button>
+				<button
+					pButton
+					class="p-button-rounded"
 					[style]="{
 						'background-color': 'transparent',
 						'border-color': 'transparent',
@@ -33,30 +47,21 @@
 					label="Sign-In"
 					icon="pi pi-sign-in"
 					[routerLink]="['/signin']"
-				/>
+				></button>
 			</div>
 			<div *ngIf="loggedIn">
-				<p-button
-					[rounded]="true"
+				<button
+					pButton
 					[style]="{
 						'background-color': 'transparent',
 						'border-color': 'transparent',
-					}"
-					*ngIf="loggedIn"
-					icon="pi pi-home"
-					class="mr-2"
-					[routerLink]="['/dashboard']"
-				/>
-				<p-button
-					[style]="{
-						'background-color': 'transparent',
-						'border-color': 'transparent',
+						color: textColor(),
 					}"
 					*ngIf="loggedIn"
 					icon="pi pi-user"
-					[rounded]="true"
+					class="p-button-rounded"
 					(click)="op.toggle($event)"
-				/>
+				></button>
 			</div>
 			<p-overlayPanel #op [style]="{ 'min-width': '22rem' }">
 				<div *ngIf="loggedIn" class="flex flex-row">
@@ -109,6 +114,6 @@
 					/>
 				</div>
 			</p-overlayPanel>
-		</p-toolbar>
-	</div>
+		</ng-template>
+	</p-toolbar>
 </div>

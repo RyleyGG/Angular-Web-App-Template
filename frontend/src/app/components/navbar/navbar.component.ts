@@ -24,6 +24,7 @@ import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 @Component({
 	selector: 'app-navbar',
@@ -46,6 +47,7 @@ import { RippleModule } from 'primeng/ripple';
 		FormsModule,
 		InputTextModule,
 		RippleModule,
+		TieredMenuModule,
 	],
 	templateUrl: './navbar.component.html',
 	styleUrl: 'navbar.component.css',
@@ -55,6 +57,51 @@ export class NavbarComponent implements OnInit {
 	loggedInUser: User | null = null;
 	isDarkMode: boolean = false;
 	themeIcon = signal('');
+	textColor = signal('');
+
+	dummyNavItems = [
+		{
+			label: 'Home',
+			icon: 'pi pi-home',
+			routerLink: ['/dashboard'],
+		},
+		{
+			label: 'Projects',
+			icon: 'pi pi-search',
+			items: [
+				{
+					label: 'Project 1',
+					icon: 'pi pi-bolt',
+				},
+				{
+					label: 'Project 2',
+					icon: 'pi pi-server',
+				},
+				{
+					label: 'Project 3',
+					icon: 'pi pi-pencil',
+				},
+				{
+					label: 'Project 4',
+					icon: 'pi pi-palette',
+					items: [
+						{
+							label: 'Apollo',
+							icon: 'pi pi-palette',
+						},
+						{
+							label: 'Ultima',
+							icon: 'pi pi-palette',
+						},
+					],
+				},
+			],
+		},
+		{
+			label: 'Contact',
+			icon: 'pi pi-envelope',
+		},
+	];
 
 	constructor(
 		private router: Router,
@@ -67,6 +114,8 @@ export class NavbarComponent implements OnInit {
 			() => {
 				const themeIcon = this.themeService.currentThemeIcon();
 				this.themeIcon.set(this.themeService.currentThemeIcon());
+				console.log(this.themeService.textColor());
+				this.textColor.set(this.themeService.textColor());
 
 				this.isDarkMode =
 					this.themeService.currentTheme() === Theme.dark;
