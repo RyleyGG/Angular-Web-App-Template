@@ -1,0 +1,73 @@
+.page-content {
+  width: 75%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  padding: 1rem;
+  height: 100%;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+.loading {
+  margin: auto;
+  height: 400px; 
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+.inputText {
+  border-radius: 20px;
+  color: var(--primary-color);
+  outline: 1px solid var(--primary-color);
+}
+.inputText input {
+  outline: none;
+}
+.inputText::placeholder {
+  color: var(--primary-color);
+}
+.add {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  padding: 1rem;
+  height: fit-content;
+  cursor: pointer;
+}
+h1 {
+  font-size: 3.125rem;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.125rem;
+  margin: 0;
+  margin-left: 9px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5em;
+  overflow-y: scroll;
+}
+
+
+.my-courses-container>* {
+  transition-duration: 250ms;
+}
+
+.my-courses-container>*:hover {
+  scale: 1.1;
+}
+
+.user-stats-container>* {
+  flex-grow: 1;
+}
+
+:root {
+  overflow: hidden;
+}

@@ -1,12 +1,13 @@
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import func
-from sqlmodel import SQLModel, Session, select
-from models.db_models import Dummy
+from sqlmodel import SQLModel
 
-from routers import dummy_router
-from services.api_utility_service import engine, get_session
+from services import auth_service
+from routers import auth_router, user_router
+from models.db_models import User
+from services.api_utility_service import engine
 
 
 @asynccontextmanager
@@ -14,11 +15,12 @@ async def on_startup(app: FastAPI):
     SQLModel.metadata.create_all(engine)
     yield
 
+
 app = FastAPI(
     lifespan=on_startup
 )
-
-app.include_router(dummy_router.router, prefix='/dummy', tags=['Dummy'])
+app.include_router(auth_router.router, prefix='/auth', tags=["Authentication"])
+app.include_router(user_router.router, prefix='/user', dependencies=[Depends(auth_service.validate_token)], tags=["User"])
 
 origins = ["*"]
 app.add_middleware(
@@ -30,11 +32,6 @@ app.add_middleware(
 )
 
 
-@app.get('/write')
-async def root(db: Session = Depends(get_session)):
-    newDummy = Dummy(some_str='Hello world')
-    db.add(newDummy)
-    db.commit()
-
+@app.get("/")
+async def root(user: User = Depends(auth_service.validate_token)):
     return {'message': 'Hello World'}
-

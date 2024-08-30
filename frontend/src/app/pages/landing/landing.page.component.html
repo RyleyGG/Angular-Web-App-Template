@@ -1,13 +1,70 @@
-<div class="grid" [style]="{'margin-top': '10vh'}">
-  <p-card header="Placeholder Card" class="p-card">
-    <div class="flex flex-column gap-2">
-      <button
-        pButton
-        pRipple
-        label="Some button"
-        type="button"
-        class="p-button-raised"
-      ></button>
+<!--Hero Section-->
+<div class="grid" style="background-color: var(--surface-section); color: var(--surface-800);">
+  <div class="hero-column" style="padding: 3rem; text-align: left; display: flex; align-items: center;">
+    <section>
+      <span style="font-weight: 700; font-size: 3rem; display: block;">Intriguing</span>
+      <div style="font-weight: 700; color: var(--primary-color); font-size: 3rem; margin-bottom: 1rem;">call to action
+      </div>
+      <p style="color: var(--surface-700); line-height: 1.5; margin-bottom: 1.5rem; font-size: 1.25rem;">Tagline</p>
+
+      <button pButton pRipple label="Learn More" type="button" class="p-button-raised"
+              style="margin-right: 1.5em;" (click)="scrollToComponent('whyOurApp')"></button>
+      <button pButton pRipple label="Register" type="button" class="p-button-outlined"
+              [routerLink]="['/signup']"></button>
+    </section>
+  </div>
+  <div class="hero-column" style="overflow: hidden; text-align: right;">
+    <img
+      src="https://www.insidehighered.com/sites/default/files/styles/max_650x650/public/2023-11/shapecharge%20e%20plus.jpg?itok=WhyZXGoJ"
+      alt="Image"
+      style="display: block; clip-path: polygon(8% 0, 100% 0%, 100% 100%, 0 100%); float: right; min-width: 850px;">
+  </div>
+</div>
+
+<!--Feature / Why Our App Section-->
+<div id="whyOurApp"
+     style="background-color: var(--surface-section); padding: 5rem 1.5rem; text-align: center;">
+  <div style="margin-bottom: 1.5rem; font-size: 2.5rem;">
+    <span style="font-weight: 900;">Why Our App</span>
+  </div>
+  <div class="grid">
+    <div class="feature-column" style="margin-bottom: 1.5rem; padding: 0 2rem;">
+            <span class="feature-icon-box" style="border-radius: 10px">
+                <i style="font-size: 2rem; color: var(--primary-color)" class="pi pi-book"></i>
+            </span>
+      <div style="font-weight: 900; font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 500;">Item 1</div>
+      <span style="font-weight: 700; line-height: 1.5;">Description 1</span>
     </div>
-  </p-card>
+    <div class="feature-column" style="margin-bottom: 1.5rem; padding: 0 2rem;">
+            <span class="feature-icon-box" style="border-radius: 10px">
+                <i style="font-size: 2rem; color: var(--primary-color)" class="pi pi-users"></i>
+            </span>
+      <div style="font-weight: 900; font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 500;">Item 2</div>
+      <span style="font-weight: 700; line-height: 1.5;">Description 2</span>
+    </div>
+    <div class="feature-column" style="margin-bottom: 1.5rem; padding: 0 2rem;">
+        <span class="feature-icon-box" style="border-radius: 10px">
+                <i style="font-size: 2rem; color: var(--primary-color)" class="pi pi-check-circle"></i>
+            </span>
+      <div style="font-weight: 900; font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 500;">Item 3</div>
+      <span style="font-weight: 700; line-height: 1.5;">Description 3</span>
+    </div>
+  </div>
+</div>
+
+<!--Call To Action Section-->
+<div style="background-color: var(--surface-section); padding: 5rem 1.5rem;">
+  <div style="font-weight: 700; text-align: center;">
+    <div style="font-weight: 900; font-size: 2.5rem; margin-bottom: 1.5rem;">Start Today
+    </div>
+    <div style="font-weight: 700; font-size: 1.5rem; margin-bottom: 2rem" class="text-700 text-2xl mb-5">Tagline</div>
+    <button pButton pRipple label="Register Now" icon="pi pi-check"
+            style="font-weight: 700; padding: 1rem 2rem; white-space: nowrap;" class="p-button-raised p-button-rounded"
+            [routerLink]="['/signup']"></button>
+  </div>
+</div>
+
+<!--Footer Section (maybe not needed)-->
+<div>
+
 </div>

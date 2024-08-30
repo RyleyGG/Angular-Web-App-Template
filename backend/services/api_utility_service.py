@@ -4,13 +4,14 @@ from typing import Generic, T
 from fastapi.encoders import jsonable_encoder
 from pydantic import parse_obj_as, TypeAdapter
 from pydantic.v1.main import ModelMetaclass
-from sqlalchemy import TypeDecorator, JSON, create_engine
-from sqlmodel import Session
+from sqlalchemy import TypeDecorator, JSON
+from sqlmodel import Session, create_engine
 
 from services.config_service import config
 
-DATABASE_URL = f'postgresql://postgres:{config.postgres_password}@db:5432/postgres'
-engine = create_engine(DATABASE_URL)
+
+dbUrl = f'postgresql://postgres:{config.postgres_password}@db:5432/postgres'
+engine = create_engine(dbUrl)
 
 
 def get_session():

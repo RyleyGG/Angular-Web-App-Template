@@ -1,10 +1,10 @@
-import {TestBed} from '@angular/core/testing';
-import {provideRouter} from '@angular/router';
-import {provideHttpClient} from '@angular/common/http';
-import {provideHttpClientTesting} from '@angular/common/http/testing';
-import {routes} from './app.routes';
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { routes } from './app.routes';
 
-import {AppComponent} from './app.component';
+import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,8 +13,8 @@ describe('AppComponent', () => {
       providers: [
         provideHttpClient(),
         provideHttpClientTesting(),
-        provideRouter(routes)
-      ]
+        provideRouter(routes),
+      ],
     }).compileComponents();
   });
 
@@ -24,9 +24,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'angular_app_template' title`, () => {
+  it(`should have the 'angular_auth_app' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Angular App Template');
+    expect(app.title).toEqual('angular_auth_app');
   });
 });

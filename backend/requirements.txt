@@ -11,3 +11,6 @@ requests
 pytest
 httpx
 loguru
+bcrypt
+python-multipart
+pandas

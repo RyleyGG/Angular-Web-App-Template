@@ -9,7 +9,7 @@ services:
     depends_on:
       - db
     environment:
-      POSTGRES_PASSWORD: ${postgres_password}
+      postgres_password: ${postgres_password}
 
   db:
     image: postgres:latest
@@ -19,7 +19,6 @@ services:
       POSTGRES_PASSWORD: ${postgres_password}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-  
+
 volumes:
   postgres_data:
-    

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular_app_template": {
+    "angular_auth_app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular_app_template",
+            "outputPath": "dist/angular_auth_app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -26,19 +26,17 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeflex/primeflex.css",
               {
-                "input": "src/app/core/services/theme/saga-blue.css",
+                "input": "src/app/theme/saga-blue.css",
                 "bundleName": "saga-blue",
                 "inject": false
               },
               {
-                "input": "src/app/core/services/theme/arya-blue.css",
+                "input": "src/app/theme/arya-blue.css",
                 "bundleName": "arya-blue",
                 "inject": false
-              }
+              },
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": []
           },
@@ -47,8 +45,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1.5mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -70,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular_app_template:build:production"
+              "buildTarget": "angular_auth_app:build:production"
             },
             "development": {
-              "buildTarget": "angular_app_template:build:development"
+              "buildTarget": "angular_auth_app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "angular_app_template:build"
+            "buildTarget": "angular_auth_app:build"
           }
         },
         "test": {
@@ -98,9 +96,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeflex/primeflex.css"
+              "node_modules/quill/dist/quill.snow.css"
             ],
             "scripts": []
           }

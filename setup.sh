@@ -1,13 +1,14 @@
 #!/bin/bash
 
-if [ ! -f ./backend/.env ]; then
+if [ ! -f .env ]; then
     echo "Creating .env file with default values..."
 
-    postgres_username=$(dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64)
     postgres_password=$(dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64)
+    auth_secret=$(dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64)
 
-    echo "postgres_username=$postgres_username" >> ./backend/.env
-    echo "postgres_password=$postgres_password" >> ./backend/.env
+    echo "postgres_password=$postgres_password" >> .env
+    echo "auth_secret=$auth_secret" >> .env
+    echo "API_URL=http://127.0.0.1:8000" >> .env
 fi
 
 if [ ! -d ./backend/.venv ]; then
