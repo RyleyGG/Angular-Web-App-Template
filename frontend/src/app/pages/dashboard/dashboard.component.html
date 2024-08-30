@@ -1,35 +1,4 @@
-<div style="display: grid; grid-template-columns: 60% 40%; gap: 1.5em; padding: 1.5em; overflow-x: visible;">
-  <section style="grid-column: 1 / 2;">
-    <h1>Dashboard</h1>
-    <button pButton pRipple (click)="handleEditProfile()">Edit Profile</button>
-  </section>
-</div>
-
-<div *ngIf="editProfileDialogVisible">
-  <p-dialog header="Edit Profile" [(visible)]="editProfileDialogVisible" [modal]="true" [style]="{ width: '50vw' }"
-            [draggable]="false" [resizable]="false">
-    <div style="display: flex; justify-content: space-between; align-content: center;">
-            <span class="p-float-label">
-                <input pInputText id="firstName" [(ngModel)]="updatedFirstName"/>
-                <label for="firstName">First Name</label>
-            </span>
-      <span class="p-float-label">
-                <input pInputText id="lastName" [(ngModel)]="updatedLastName"/>
-                <label for="lastName">Last Name</label>
-            </span>
-    </div>
-    <span class="p-float-label" style="margin-top: 1.5em; width: 100%;">
-            <input pInputText id="email" style="width: 100%;" [(ngModel)]="updatedEmail"/>
-            <label for="email">Email</label>
-        </span>
-
-    <ng-template pTemplate="footer">
-      <div style="display: flex;">
-        <p-button icon="pi pi-times" label="Cancel" [rounded]="true" [outlined]="true"
-                  (click)="cancelUserUpdate();"/>
-        <p-button icon="pi pi-save" label="Save" [rounded]="true" [outlined]="true"
-                  (click)="updateUserInformation();"/>
-      </div>
-    </ng-template>
-  </p-dialog>
+<div class="mt-2 mb-2 ml-3">
+	<div class="text-7xl font-bold">Dashboard</div>
+	<div class="text-xl font-italic">Hello, {{ userName }}!</div>
 </div>
