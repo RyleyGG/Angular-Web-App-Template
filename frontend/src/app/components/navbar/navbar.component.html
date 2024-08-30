@@ -14,8 +14,11 @@
 			<div [routerLink]="['/dashboard']">
 				<img src="assets/logo-placeholder-image.png" [width]="64" />
 			</div>
-			<!--      <p-tieredMenu [model]="dummyNavItems" />-->
-			<i class="pi pi-align-justify" (click)="menu.toggle($event)"></i>
+			<i
+				*ngIf="loggedIn"
+				class="pi pi-align-justify"
+				(click)="menu.toggle($event)"
+			></i>
 			<p-tieredMenu
 				#menu
 				[model]="dummyNavItems"
