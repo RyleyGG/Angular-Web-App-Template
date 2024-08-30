@@ -1,0 +1,25 @@
+# local dev environment
+.env
+.vscode
+.expo
+.idea
+.DS_Store
+frontend/.editorconfig
+frontend/.idea
+backend/.idea
+
+# backend
+backend/__pycache__
+backend/routers/__pycache__
+backend/models/__pycache__
+backend/services/__pycache__
+backend/.venv
+backend/logs/*
+!backend/logs/.gitkeep
+kaggle_db.sqlite
+
+# frontend
+frontend/dist
+frontend/.angular
+frontend/node_modules
+frontend/documentation/*
