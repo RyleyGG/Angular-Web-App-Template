@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import {
@@ -7,7 +7,7 @@ import {
 	RouterLinkActive,
 	RouterOutlet,
 } from '@angular/router';
-import { ThemeService } from '../../theme/theme.service';
+import { Theme, ThemeService } from '../../theme/theme.service';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MenubarModule } from 'primeng/menubar';
@@ -54,6 +54,7 @@ export class NavbarComponent implements OnInit {
 	loggedIn: boolean = false;
 	loggedInUser: User | null = null;
 	isDarkMode: boolean = false;
+	themeIcon = signal('');
 
 	constructor(
 		private router: Router,
@@ -62,7 +63,16 @@ export class NavbarComponent implements OnInit {
 		private localStorageService: LocalStorageService,
 		private userService: UserService,
 	) {
-		this.isDarkMode = this.themeService.theme() == 'arya-blue';
+		effect(
+			() => {
+				const themeIcon = this.themeService.currentThemeIcon();
+				this.themeIcon.set(this.themeService.currentThemeIcon());
+
+				this.isDarkMode =
+					this.themeService.currentTheme() === Theme.dark;
+			},
+			{ allowSignalWrites: true },
+		);
 	}
 
 	async ngOnInit() {
@@ -80,13 +90,12 @@ export class NavbarComponent implements OnInit {
 	}
 
 	swapTheme(): void {
-		const newTheme =
-			this.themeService.theme() == 'arya-blue'
-				? 'saga-blue'
-				: 'arya-blue';
-		this.themeService.setTheme(newTheme);
-		this.localStorageService.set('theme', newTheme);
-		this.isDarkMode = newTheme == 'arya-blue';
+		this.themeService.currentTheme.set(
+			this.themeService.currentTheme() === Theme.dark
+				? Theme.light
+				: Theme.dark,
+		);
+		this.isDarkMode = this.themeService.currentTheme() === Theme.dark;
 	}
 
 	signOut(): void {

@@ -7,12 +7,7 @@
 		"
 	>
 		<div [routerLink]="['/dashboard']">
-			<div
-				class="text-5xl font-bold ml-2"
-				[style.color]="'var(--primary-color-text)'"
-			>
-				Placeholder
-			</div>
+			<img src="assets/logo-placeholder-image.png" [width]="64" />
 		</div>
 		<p-toolbar
 			[style]="{ border: 'none', 'background-color': 'transparent' }"
@@ -91,8 +86,8 @@
 					<p-button
 						[rounded]="true"
 						[outlined]="true"
-						[label]="isDarkMode ? 'Dark' : 'Light'"
-						[icon]="isDarkMode ? 'pi pi-moon' : 'pi pi-sun'"
+						[label]="isDarkMode ? 'Light' : 'Dark'"
+						[icon]="themeIcon()"
 						(click)="swapTheme()"
 					/>
 					<p-button

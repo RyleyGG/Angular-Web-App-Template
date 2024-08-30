@@ -2,7 +2,7 @@
 	class="flex justify-content-center align-content-center align-items-center h-full"
 >
 	<form [formGroup]="signinForm" (ngSubmit)="signin()">
-		<p-card [style]="{ width: '40vw', height: '50vh' }">
+		<p-card [style]="{ width: '40vw', height: '30vh' }">
 			<div class="flex align-items-center justify-content-center">
 				<p class="text-3xl m-0 font-bold">Sign In</p>
 			</div>
@@ -42,8 +42,8 @@
 			</div>
 
 			<!--Password Input-->
-			<div class="flex gap-2 mt-3 align-items-center">
-				<span class="p-float-label" style="flex-grow: 1">
+			<div class="flex gap-2 mt-5 align-items-center">
+				<span class="p-float-label flex-grow-1">
 					<input
 						type="password"
 						pInputText

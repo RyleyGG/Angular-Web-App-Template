@@ -2,3 +2,66 @@
 	<div class="text-7xl font-bold">Dashboard</div>
 	<div class="text-xl font-italic">Hello, {{ userName }}!</div>
 </div>
+
+<div class="flex grid col-12">
+	<div class="col-4">
+		<p-card>
+			<p-chart
+				type="bar"
+				[data]="chartOneData"
+				[options]="chartOneOpts"
+				height="300px"
+			/>
+		</p-card>
+	</div>
+	<div class="col-4">
+		<p-card>
+			<p-chart
+				type="pie"
+				[data]="chartTwoData"
+				[options]="chartTwoOpts"
+				height="300px"
+			/>
+		</p-card>
+	</div>
+	<div class="col-4">
+		<p-card>
+			<p-chart
+				type="bar"
+				[data]="chartThreeData"
+				[options]="chartThreeOpts"
+				height="300px"
+			/>
+		</p-card>
+	</div>
+	<div class="col-4">
+		<p-card>
+			<p-chart
+				type="pie"
+				[data]="chartTwoData"
+				[options]="chartTwoOpts"
+				height="300px"
+			/>
+		</p-card>
+	</div>
+	<div class="col-8">
+		<p-card>
+			<p-chart
+				type="bar"
+				[data]="chartThreeData"
+				[options]="chartThreeOpts"
+				height="300px"
+			/>
+		</p-card>
+	</div>
+	<div class="col-12">
+		<p-card>
+			<p-chart
+				type="line"
+				[data]="chartFourData"
+				[options]="chartFourOpts"
+				height="300px"
+			/>
+		</p-card>
+	</div>
+</div>
