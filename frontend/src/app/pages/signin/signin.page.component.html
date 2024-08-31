@@ -67,7 +67,13 @@
 					/>
 				</div>
 			</div>
-			<div *ngIf="errorMessage">{{ errorMessage }}</div>
+			<div
+				*ngIf="errorMessage"
+				[style.color]="'red'"
+				class="font-semibold mb-1"
+			>
+				{{ errorMessage }}
+			</div>
 			<ng-template pTemplate="footer">
 				<div
 					class="flex flex-column justify-content-center align-items-center text-lg opacity-70"
