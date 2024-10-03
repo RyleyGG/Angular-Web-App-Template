@@ -71,7 +71,7 @@ export class ThemeService {
 		) as HTMLLinkElement;
 
 		if (!!themeLink) {
-			themeLink.href = theme + '.css';
+            themeLink.href = theme + '.css';
 			this.currentTheme.set(theme);
 			this.localStorageService.set('theme', theme);
 		}

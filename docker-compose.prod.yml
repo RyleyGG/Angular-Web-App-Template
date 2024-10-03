@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: dockerfile.prod
+    command: ["/app/api_start.sh"]
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dockerfile.prod
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    environment:
+      API_URL: http://api:8000
+
+volumes:
+  postgres_data:
