@@ -1,20 +1,3 @@
-# FROM node:22 AS build
-
-# WORKDIR /usr/src/app
-
-# COPY . .
-# RUN npm install
-# RUN npm run build --prod
-
-# FROM node:22
-# WORKDIR /usr/src/app
-# COPY --from=build /usr/src/app/dist/angular_auth_app /usr/src/app
-
-# RUN npm install -g http-server
-# EXPOSE 8080
-
-# CMD ["http-server", "/usr/src/app", "-p", "8080", "-c-1", "--push-state", "--fallback", "index.html"]
-
 FROM node:22 AS build
 
 WORKDIR /usr/src/app
